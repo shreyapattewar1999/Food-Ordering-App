@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "748285750702",
+    "firebase_url": "https://foodon-d4e92.firebaseio.com",
+    "project_id": "foodon-d4e92",
+    "storage_bucket": "foodon-d4e92.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748285750702:android:a8c9d26ab04bdcc0fd6c3f",
+        "android_client_info": {
+          "package_name": "com.example.foodon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748285750702-ekphqk3r30bgjr7kct1oqrsratc4vq34.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0RsERiHfo4DikGiaVcTlLWlCuhPjONIM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748285750702-ekphqk3r30bgjr7kct1oqrsratc4vq34.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
