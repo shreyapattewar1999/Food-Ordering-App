@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.second.chefFoodPanel.Chef_PostDish"
+    tools:context=".GiveReview"
     android:background="@drawable/img11">
 
 
@@ -34,12 +34,11 @@
         app:layout_constraintHorizontal_bias="0.53">
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="136dp"
-            android:layout_height="115dp"
-            tools:layout_editor_absoluteX="142dp"
-            tools:layout_editor_absoluteY="172dp"
-            tools:srcCompat="@drawable/img10"/>
+            android:id="@+id/dish_photo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            tools:layout_editor_absoluteX="200dp"
+            tools:layout_editor_absoluteY="200dp"/>
 
     </LinearLayout>
 

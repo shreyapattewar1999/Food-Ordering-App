@@ -16,11 +16,15 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
         MyDB.execSQL("create Table if not exists users(ID INTEGER primary key autoincrement,Emailid TEXT, Fname TEXT, Lname TEXT, Password TEXT, Mobilenumber TEXT, Location TEXT, Area TEXT)");
+        MyDB.execSQL("create Table if not exists reviews(IMAGE_ID INTEGER primary key autoincrement, Image_URI TEXT, Description TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase MyDB, int i, int i1) {
         MyDB.execSQL("drop Table if exists users");
+        MyDB.execSQL("drop Table if exists reviews");
+
+        onCreate(MyDB);
     }
 
     public Boolean insertData(String Emailid, String Fname, String Lname, String Password, String Mobilenumber, String Location, String Area ){
@@ -42,6 +46,24 @@ public class DBHelper extends SQLiteOpenHelper {
             {
             return true;
             }
+    }
+
+    public Boolean insertReviews(String img_uri, String description){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues contentValues= new ContentValues();
+//        contentValues.put("Image_Name", img_name);
+        contentValues.put("Image_URI",img_uri);
+        contentValues.put("Description", description);
+        long result = MyDB.insert("reviews", null, contentValues);
+        if(result==-1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
     }
 
     public Boolean checkEmailid(String Emailid) {
