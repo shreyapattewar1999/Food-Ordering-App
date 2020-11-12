@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/MainMenu" android:title="MainMenu">
+        <menu>
+            <item
+                android:title="Update Profile"
+                android:icon="@drawable/ic_baseline_person_24"
+                android:id="@+id/UpdateProfile"
+                app:showAsAction="always">
+                <menu>
+                    <item
+                        android:title="Update Contact Number"
+                        android:id="@+id/UpdateContact"
+                        android:icon="@drawable/ic_baseline_local_phone_24"
+                        app:showAsAction="always"/>
+
+                    <item
+                        android:title="Update Address"
+                        android:id="@+id/AddressUpdate"
+                        android:icon="@drawable/ic_baseline_edit_location_24"
+                        app:showAsAction="always"/>
+
+                    <item
+                        android:title="Update Password"
+                        android:id="@+id/UpdatePassword"
+                        android:icon="@drawable/ic_baseline_remove_red_eye_24"
+                        app:showAsAction="always"/>
+
+
+                </menu>
+
+
+            </item>
+
+            <item
+                android:title="AboutUs"
+                android:id="@+id/AboutUs"
+                android:icon="@drawable/ic_basket"
+                app:showAsAction="always"/>
+
+            <item
+                android:title="Logout"
+                android:id="@+id/Logout"
+                android:icon="@drawable/ic_logout"
+                app:showAsAction="always"/>
+        </menu>
+    </item>
+
+</menu>

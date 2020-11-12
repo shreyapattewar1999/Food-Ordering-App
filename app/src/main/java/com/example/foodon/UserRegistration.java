@@ -138,8 +138,8 @@ public class UserRegistration extends AppCompatActivity {
                         if(checkuser==false){
                             Boolean insert = DB.insertData(emailid, fname, lname, password, mobile, location_1, area);
                             if(insert==true){
-                                Toast.makeText(UserRegistration.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                                Toast.makeText(UserRegistration.this, "Registered successfully, Please Sign In to continue", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), SignIn.class);
                                 startActivity(intent);
                             }else{
                                 Toast.makeText( UserRegistration.this, "Registration failed", Toast.LENGTH_SHORT).show();

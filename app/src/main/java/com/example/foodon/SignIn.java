@@ -17,7 +17,7 @@ public class SignIn extends AppCompatActivity {
 
     TextInputLayout Lemail, Lpassword;
     Button Login_btn;
-    TextView JumpToRegisteration;
+    TextView JumpToRegisteration, ForgotPassword;
     DBHelper DB;
     Boolean checkuserpass;
 
@@ -33,6 +33,16 @@ public class SignIn extends AppCompatActivity {
 
         Login_btn = (Button)findViewById(R.id.Login_btn);
         JumpToRegisteration =(TextView) findViewById(R.id.JumpToRegisteration);
+        ForgotPassword = (TextView) findViewById(R.id.ForgotPassword);
+
+        ForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), ForgotPassword.class);
+                startActivity(i);
+
+            }
+        });
 
         Login_btn.setOnClickListener(new View.OnClickListener() {
             @Override

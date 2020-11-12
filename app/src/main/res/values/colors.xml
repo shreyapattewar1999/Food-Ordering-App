@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#E91E63</color>
     <color name="white">#FFFFFF</color>
     <color name="green">#5FB709</color>
     <color name="Red">#EB0D0D</color>
@@ -16,6 +16,9 @@
     <color name="darkgreen">#026909</color>
     <color name="OffWhite">#36FFFFFF</color>
     <color name="DarkBlue">#250285</color>
+    <color name="duskYellow">#FFC107</color>
+    <color name="ratepink">#E91E63</color>
 
-    <color name="yourSelectedColor">#ff0000</color>
+
+    <color name="yourSelectedColor">#3F51B5</color>
 </resources>

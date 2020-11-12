@@ -98,8 +98,9 @@ public class GiveReview extends AppCompatActivity {
         description_image = description.getEditText().getText().toString();
         Boolean id = dbHelper.insertReviews(""+imageUri, description_image);
 
+//        Toast.makeText(this, ""+imageUri,Toast.LENGTH_LONG).show();
         if (id==true){
-            Toast.makeText(this, "You have successfully added review", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "You have successfully added review"+imageUri, Toast.LENGTH_LONG).show();
         }
         else{
             Toast.makeText(this, "Record is not added", Toast.LENGTH_LONG).show();
@@ -273,11 +274,12 @@ public class GiveReview extends AppCompatActivity {
                     Uri resultUri = result.getUri();
                     imageUri = resultUri;
                     //set image
-                    Toast.makeText(this, ""+imageUri,Toast.LENGTH_LONG).show();
+//                    Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+//                    dish_photo.setImageBitmap(bitmap);
 
-                    File f = new File(String.valueOf(resultUri));
-                    dish_photo.setImageURI(fromFile(f));
-//                    dish_photo.setImageURI(resultUri);
+//                    File f = new File(String.valueOf(resultUri));
+//                    dish_photo.setImageURI(fromFile(f));
+                    dish_photo.setImageURI(resultUri);
                 }
                 else if(resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
                     //error

@@ -85,6 +85,25 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
     }
 
+    public Boolean updatePassword(String password, String emailid){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues contentValues= new ContentValues();
+        contentValues.put("Password", password);
+        long result = MyDB.update("users", contentValues, "Emailid = ?", new String[]{emailid});
+
+        if(result == -1) return false;
+        else return true;
+    }
+
+    public Boolean updateContactNumber(String number, String emailid){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues contentValues= new ContentValues();
+        contentValues.put("Mobilenumber", number);
+        long result = MyDB.update("users", contentValues, "Emailid = ?", new String[]{emailid});
+
+        if(result == -1) return false;
+        else return true;
+    }
 
     public String getLoginData(String email,String password)
     {

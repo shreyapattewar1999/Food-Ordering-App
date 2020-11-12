@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GiveReview"
-    android:background="@drawable/img11">
+    android:background="@drawable/img3">
 
 
     <ImageButton
         android:id="@+id/image_upload"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="92dp"
+        android:layout_height="107dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/camerashapebtn"
         android:src="@drawable/ic_camera"
@@ -35,10 +35,11 @@
 
         <ImageView
             android:id="@+id/dish_photo"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="168dp"
+            android:layout_height="118dp"
+            android:src="@drawable/ic_restaurant"
             tools:layout_editor_absoluteX="200dp"
-            tools:layout_editor_absoluteY="200dp"/>
+            tools:layout_editor_absoluteY="200dp" />
 
     </LinearLayout>
 
@@ -67,20 +68,50 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+
+    <TextView
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginBottom="180dp"
+        android:fontFamily="serif-monospace"
+        android:gravity="center_horizontal"
+        android:text="Rate us !"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RatingBar
+        android:id="@+id/rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginLeft="84dp"
+        android:layout_marginBottom="112dp"
+        android:theme="@style/RatingBar"
+        android:numStars="5"
+        android:stepSize="0.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
+        android:id="@+id/post"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:id="@+id/post"
         android:background="@drawable/btnred"
-        app:layout_constraintTop_toBottomOf="@id/description"
         android:text="Post"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.30"
-        app:layout_constraintHorizontal_bias="0.498"
-        android:textSize="20sp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        app:layout_constraintVertical_bias="0.808" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

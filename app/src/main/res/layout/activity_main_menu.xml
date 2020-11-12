@@ -28,7 +28,7 @@
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
             android:fontFamily="serif-monospace"
-            android:text="Find homemade food around you or offer your own !"
+            android:text="We provide delicious food to fulfill your appetite !"
             android:textAlignment="center"
             android:textColor="#050505"
             android:textSize="18sp"
