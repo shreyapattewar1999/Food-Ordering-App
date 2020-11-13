@@ -51,7 +51,7 @@ public class GiveReview extends AppCompatActivity {
     private String[] cameraPermissions;  //camera and storage
     private String[] storagePermissions; //only storage
 
-    private Uri imageUri;
+    public Uri imageUri;
     private String description_image;
     String currentPhotoPath;
 

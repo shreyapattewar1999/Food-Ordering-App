@@ -105,6 +105,16 @@ public class DBHelper extends SQLiteOpenHelper {
         else return true;
     }
 
+    public Boolean updateAddress(String Address, String emailid){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues contentValues= new ContentValues();
+        contentValues.put("Area", Address);
+        long result = MyDB.update("users", contentValues, "Emailid = ?", new String[]{emailid});
+
+        if(result == -1) return false;
+        else return true;
+    }
+
     public String getLoginData(String email,String password)
     {
         SQLiteDatabase sql=this.getReadableDatabase();

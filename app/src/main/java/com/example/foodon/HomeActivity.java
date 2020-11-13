@@ -181,10 +181,14 @@ public class HomeActivity extends AppCompatActivity {
 
                 case R.id.UpdatePassword:
                     Toast.makeText(this, "Update Password selected", LENGTH_LONG).show();
+                    Intent intent_1 = new Intent(getApplicationContext(), UpdatePassword.class);
+                    startActivity(intent_1);
                     break;
 
                 case R.id.AddressUpdate:
-                    Toast.makeText(this, "Update ADDRESS selected", LENGTH_LONG).show();
+                    Toast.makeText(this, "Update address selected", LENGTH_LONG).show();
+                    Intent intent_2 = new Intent(getApplicationContext(), UpdateAddress.class);
+                    startActivity(intent_2);
                     break;
 
 

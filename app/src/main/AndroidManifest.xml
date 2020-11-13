@@ -25,7 +25,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateContactNumber"></activity>
+        <activity android:name=".UpdateAddress"></activity>
+        <activity android:name=".UpdatePassword" />
+        <activity android:name=".UpdateContactNumber" />
         <activity android:name=".AboutUS" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".HomeActivity" />
