@@ -94,6 +94,16 @@ public class GiveReview extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void onBackPressed(){
+
+        Intent intent = new Intent(getApplicationContext(), MainMenu.class);
+        startActivity(intent);
+
+        super.onBackPressed();
+    }
+
     private void inputData() {
         description_image = description.getEditText().getText().toString();
         Boolean id = dbHelper.insertReviews(""+imageUri, description_image);

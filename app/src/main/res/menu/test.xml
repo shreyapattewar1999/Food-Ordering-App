@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.myapplication.MainActivity">
+
+    <item android:id="@+id/MainMenu" android:title="MainMenu">
+        <menu>
+            <item
+                android:id="@+id/action_settings"
+                android:orderInCategory="100"
+                android:icon="@drawable/ic_basket"
+                android:title="Je kahi takaichay 1"
+                app:showAsAction="always" />
+
+            <item
+                android:id="@+id/action_settings1"
+                android:orderInCategory="100"
+                android:icon="@drawable/ic_basket"
+                android:title="Je kahi takaichay 2"
+                app:showAsAction="always" />
+
+            <item
+                android:id="@+id/action_settings2"
+                android:orderInCategory="100"
+                android:icon="@drawable/ic_basket"
+                android:title="Je kahi takaichay 3"
+                app:showAsAction="always" />
+
+        </menu>
+
+    </item>
+
+
+</menu>

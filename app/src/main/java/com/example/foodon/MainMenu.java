@@ -1,8 +1,10 @@
 package com.example.foodon;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -82,6 +84,14 @@ public class MainMenu extends AppCompatActivity {
 
 
 
+
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
 
     }
 }

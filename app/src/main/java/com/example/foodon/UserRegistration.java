@@ -168,4 +168,13 @@ public class UserRegistration extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onBackPressed(){
+
+        Intent intent = new Intent(getApplicationContext(), MainMenu.class);
+        startActivity(intent);
+
+        super.onBackPressed();
+    }
 }
