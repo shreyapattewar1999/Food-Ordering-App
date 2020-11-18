@@ -64,6 +64,8 @@ public class SignIn extends AppCompatActivity {
                     if (status==true) {
                         Toast.makeText(getApplicationContext(), "Login Successfully", Toast.LENGTH_LONG).show();
                         Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                        i.putExtra("login_id", login_email);
+                        i.putExtra("login_pass",login_password);
                         startActivity(i);
                     } else {
                         Toast.makeText(getApplicationContext(), "Invalid Credentials", Toast.LENGTH_LONG).show();

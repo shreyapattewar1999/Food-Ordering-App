@@ -17,12 +17,16 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase MyDB) {
         MyDB.execSQL("create Table if not exists users(ID INTEGER primary key autoincrement,Emailid TEXT, Fname TEXT, Lname TEXT, Password TEXT, Mobilenumber TEXT, Location TEXT, Area TEXT)");
         MyDB.execSQL("create Table if not exists reviews(IMAGE_ID INTEGER primary key autoincrement, Image_URI TEXT, Description TEXT)");
+        MyDB.execSQL("create Table if not exists orders(Order_ID INTEGER primary key autoincrement, Email_id TEXT, Orders TEXT, Delivery_Address TEXT, PRICE TEXT)");
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase MyDB, int i, int i1) {
         MyDB.execSQL("drop Table if exists users");
         MyDB.execSQL("drop Table if exists reviews");
+        MyDB.execSQL("drop Table if exists orders");
+
 
         onCreate(MyDB);
     }
@@ -67,6 +71,30 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    public Boolean insertOrders(String orders, String price, String email_id){
+        String delivery_address;
+
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor c  = DB.rawQuery("select Location, Area from users where Emailid = ?",new String[]{email_id});
+        c.moveToFirst();
+        delivery_address = c.getString(0) + " " + c.getString(1);
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues contentValues= new ContentValues();
+        contentValues.put("Email_id", email_id);
+        contentValues.put("Orders",orders);
+        contentValues.put("Delivery_Address", delivery_address);
+        contentValues.put("Price", price);
+        long result = MyDB.insert("orders", null, contentValues);
+        if(result==-1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
     public Boolean checkEmailid(String Emailid) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         Cursor cursor = MyDB.rawQuery("Select * from users where Emailid = ?", new String[]{Emailid});

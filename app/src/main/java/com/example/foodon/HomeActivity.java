@@ -12,7 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
-
+import java.util.Set;
+import java.util.TreeSet;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -20,9 +21,14 @@ import static android.widget.Toast.LENGTH_LONG;
 
 public class HomeActivity extends AppCompatActivity {
 
-    CheckBox pizza, burger, pavbhaji, chicken, biryani, daltadka;
+    CheckBox pizza, burger, pavbhaji, chicken, biryani, daltadka, fries;
     FloatingActionButton orderFood;
     Integer price=0;
+    String login_id, login_pass;
+    DBHelper DB;
+    String ordered_items="";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +41,28 @@ public class HomeActivity extends AppCompatActivity {
         daltadka = (CheckBox) findViewById(R.id.daltadka_check);
         chicken = (CheckBox) findViewById(R.id.chickentikka_check);
         pavbhaji = (CheckBox) findViewById(R.id.pavbhaji_check);
+        fries = (CheckBox) findViewById(R.id.fries_check);
+
 
         orderFood = (FloatingActionButton) findViewById(R.id.orderFood);
+
+        login_id = getIntent().getStringExtra("login_id");
+        login_pass = getIntent().getStringExtra("login_pass");
+
+        DB = new DBHelper(this);
+
+        final Set<String> food_items = new TreeSet<>();
 
         pizza.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (pizza.isChecked()){
                     price=price+300;
+                    food_items.add("pizza");
                 }
                 else if (! pizza.isChecked()){
                     price=price-300;
+                    food_items.remove("pizza");
                 }
             }
         });
@@ -55,9 +72,11 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (burger.isChecked()){
                     price=price+180;
+                    food_items.add("burger");
                 }
                 else if (! burger.isChecked()){
                     price=price-180;
+                    food_items.remove("burger");
                 }
             }
         });
@@ -67,9 +86,11 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (biryani.isChecked()){
                     price=price+200;
+                    food_items.add("biryani");
                 }
                 else if (! biryani.isChecked()){
                     price=price-200;
+                    food_items.remove("biryani");
                 }
             }
         });
@@ -79,9 +100,11 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (chicken.isChecked()){
                     price=price+600;
+                    food_items.add("chicken");
                 }
                 else if (! chicken.isChecked()){
                     price=price-600;
+                    food_items.remove("chicken");
                 }
             }
         });
@@ -91,9 +114,11 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (daltadka.isChecked()){
                     price=price+60;
+                    food_items.add("dal tadka");
                 }
                 else if (! daltadka.isChecked()){
                     price=price-60;
+                    food_items.remove("dal tadka");
                 }
             }
         });
@@ -103,12 +128,29 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (pavbhaji.isChecked()){
                     price=price+150;
+                    food_items.add("pav bhaji");
                 }
                 else if (! pavbhaji.isChecked()){
                     price=price+150;
+                    food_items.remove("pav bhaji");
                 }
             }
         });
+
+        fries.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (fries.isChecked()){
+                    price=price+90;
+                    food_items.add("fries");
+                }
+                else if (! fries.isChecked()){
+                    price=price+90;
+                    food_items.remove("fries");
+                }
+            }
+        });
+
 
 //
 
@@ -122,7 +164,23 @@ public class HomeActivity extends AppCompatActivity {
                 builder.setTitle("Place Order").setMessage("Your cart amount is "+Integer.toString(price)+". Press Ok to place your order").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(HomeActivity.this, "Your order has been placed. Food will be delivered to you in 30 minutes" , LENGTH_LONG).show();
+                        for(String s : food_items)
+                        {
+                         ordered_items=ordered_items+s+", ";
+                        }
+
+                        Boolean status = DB.insertOrders(ordered_items, Integer.toString(price), login_id );
+
+                        if (status == true){
+                            Toast.makeText(HomeActivity.this, "Your order has been placed. Food will be delivered to you in 30 minutes" , LENGTH_LONG).show();
+
+                        }
+                        else{
+                            Toast.makeText(HomeActivity.this, "Your order is not placed due to some error" , LENGTH_LONG).show();
+
+                        }
+
+;
 
                         Intent intent = new Intent(getApplicationContext(), MainMenu.class);
                         startActivity(intent);
