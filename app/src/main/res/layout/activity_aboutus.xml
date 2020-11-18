@@ -61,7 +61,7 @@
             android:layout_marginRight="4dp"
             android:fontFamily="serif-monospace"
             android:gravity="center_horizontal"
-            android:text="+200 8475996123"
+            android:text="+91 8475996123"
             android:textAlignment="center"
             android:textColor="#050505"
             android:textSize="18sp" />
@@ -89,7 +89,7 @@
             android:layout_marginRight="4dp"
             android:fontFamily="serif-monospace"
             android:gravity="center_horizontal"
-            android:text="euphoria@gmail.com"
+            android:text="foodon@gmail.com"
             android:textAlignment="center"
             android:textColor="#050505"
             android:textSize="18sp" />

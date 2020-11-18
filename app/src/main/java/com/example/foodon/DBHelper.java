@@ -16,7 +16,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
         MyDB.execSQL("create Table if not exists users(ID INTEGER primary key autoincrement,Emailid TEXT, Fname TEXT, Lname TEXT, Password TEXT, Mobilenumber TEXT, Location TEXT, Area TEXT)");
-        MyDB.execSQL("create Table if not exists reviews(IMAGE_ID INTEGER primary key autoincrement, Image_URI TEXT, Description TEXT)");
+        MyDB.execSQL("create Table if not exists reviews(IMAGE_ID INTEGER primary key autoincrement, Image_URI TEXT, Description TEXT, Rating TEXT)");
         MyDB.execSQL("create Table if not exists orders(Order_ID INTEGER primary key autoincrement, Email_id TEXT, Orders TEXT, Delivery_Address TEXT, PRICE TEXT)");
 
     }
@@ -52,13 +52,13 @@ public class DBHelper extends SQLiteOpenHelper {
             }
     }
 
-    public Boolean insertReviews(String img_uri, String description){
+    public Boolean insertReviews(String img_uri, String description, String Rating){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues= new ContentValues();
 //        contentValues.put("Image_Name", img_name);
         contentValues.put("Image_URI",img_uri);
         contentValues.put("Description", description);
-//        contentValues.put("Rating", Rating);
+        contentValues.put("Rating", Rating);
         long result = MyDB.insert("reviews", null, contentValues);
         if(result==-1)
         {

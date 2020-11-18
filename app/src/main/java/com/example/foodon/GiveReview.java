@@ -111,9 +111,11 @@ public class GiveReview extends AppCompatActivity {
     private void inputData() {
         description_image = description.getEditText().getText().toString();
 
-        Boolean id = dbHelper.insertReviews(""+imageUri, description_image);
+        String s = String.valueOf(rating.getRating());
+        Boolean id = dbHelper.insertReviews(""+imageUri, description_image, s);
+//        Boolean id = dbHelper.insertReviews(""+imageUri, description_image, s);
 
-//        Toast.makeText(this, ""+imageUri,Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, ""+s,Toast.LENGTH_LONG).show();
         if (id==true){
             Toast.makeText(this, "You have successfully added review", Toast.LENGTH_LONG).show();
             Intent i = new Intent(getApplicationContext(), MainMenu.class);
