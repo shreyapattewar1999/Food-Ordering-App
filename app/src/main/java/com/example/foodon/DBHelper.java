@@ -54,6 +54,7 @@ public class DBHelper extends SQLiteOpenHelper {
 //        contentValues.put("Image_Name", img_name);
         contentValues.put("Image_URI",img_uri);
         contentValues.put("Description", description);
+//        contentValues.put("Rating", Rating);
         long result = MyDB.insert("reviews", null, contentValues);
         if(result==-1)
         {

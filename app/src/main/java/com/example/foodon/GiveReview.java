@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.ContentValues;
 import android.content.pm.PackageManager;
+import android.media.Rating;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,6 +26,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RatingBar;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -42,6 +44,7 @@ public class GiveReview extends AppCompatActivity {
     TextInputLayout description;
     Button post;
 
+    public RatingBar rating;
     private static final int CAMERA_REQUEST_CODE = 100;
     private static final int STORAGE_REQUEST_CODE = 101;
 
@@ -64,6 +67,7 @@ public class GiveReview extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.image_upload);
         dish_photo = (ImageView) findViewById(R.id.dish_photo);
         description = (TextInputLayout) findViewById(R.id.description);
+        rating = (RatingBar) findViewById(R.id.rating_bar);
 
         post = (Button)findViewById(R.id.post);
 
@@ -106,11 +110,12 @@ public class GiveReview extends AppCompatActivity {
 
     private void inputData() {
         description_image = description.getEditText().getText().toString();
+
         Boolean id = dbHelper.insertReviews(""+imageUri, description_image);
 
 //        Toast.makeText(this, ""+imageUri,Toast.LENGTH_LONG).show();
         if (id==true){
-            Toast.makeText(this, "You have successfully added review"+imageUri, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "You have successfully added review", Toast.LENGTH_LONG).show();
         }
         else{
             Toast.makeText(this, "Record is not added", Toast.LENGTH_LONG).show();
@@ -271,34 +276,36 @@ public class GiveReview extends AppCompatActivity {
             //image is picked
             if (requestCode == IMAGE_PICK_GALLERY_CODE){
                 //PICKED FROM GALLERY
-                CropImage.activity(data.getData()).setGuidelines(CropImageView.Guidelines.ON).setAspectRatio(1,1).start(this);
+                    imageUri=data.getData();
+                    dish_photo.setImageURI(imageUri);
+//                CropImage.activity(data.getData()).setGuidelines(CropImageView.Guidelines.ON).setAspectRatio(1,1).start(this);
             }
             else if (requestCode == IMAGE_PICK_CAMERA_CODE){
                 //PICKED FROM CAMERA
-                CropImage.activity(imageUri).setGuidelines(CropImageView.Guidelines.ON).setAspectRatio(1,1).start(this);
-            }
-            else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
-                //cropped image received
-                CropImage.ActivityResult result = CropImage.getActivityResult(data);
-                if (resultCode == RESULT_OK){
-                    Uri resultUri = result.getUri();
-                    imageUri = resultUri;
-                    //set image
-//                    Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-//                    dish_photo.setImageBitmap(bitmap);
+                dish_photo.setImageURI(imageUri);
+//                CropImage.activity(imageUri).setGuidelines(CropImageView.Guidelines.ON).setAspectRatio(1,1).start(this);
+            }}
+//            if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+//                //cropped image received
+//                CropImage.ActivityResult result = CropImage.getActivityResult(data);
+//                if (resultCode == RESULT_OK){
+//                    Uri resultUri = result.getUri();
+//                    imageUri = resultUri;
+//                    //set image
+////                    Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+////                    dish_photo.setImageBitmap(bitmap);
+//
+////                    File f = new File(String.valueOf(resultUri));
+////                    dish_photo.setImageURI(fromFile(f));
+//                    dish_photo.setImageURI(resultUri);
+//                }
+//                else if(resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
+//                    //error
+//                Exception error = result.getError();
+//                    Toast.makeText(this, ""+error, Toast.LENGTH_LONG).show();
+//                }
+//            }
 
-//                    File f = new File(String.valueOf(resultUri));
-//                    dish_photo.setImageURI(fromFile(f));
-                    dish_photo.setImageURI(resultUri);
-                }
-                else if(resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
-                    //error
-                Exception error = result.getError();
-                    Toast.makeText(this, ""+error, Toast.LENGTH_LONG).show();
-                }
-            }
-
-        }
 
         super.onActivityResult(requestCode, resultCode, data);
     }
