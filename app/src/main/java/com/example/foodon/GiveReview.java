@@ -116,6 +116,8 @@ public class GiveReview extends AppCompatActivity {
 //        Toast.makeText(this, ""+imageUri,Toast.LENGTH_LONG).show();
         if (id==true){
             Toast.makeText(this, "You have successfully added review", Toast.LENGTH_LONG).show();
+            Intent i = new Intent(getApplicationContext(), MainMenu.class);
+            startActivity(i);
         }
         else{
             Toast.makeText(this, "Record is not added", Toast.LENGTH_LONG).show();
