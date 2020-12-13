@@ -94,9 +94,13 @@ public class UserRegistration extends AppCompatActivity {
 
                             try {
                                 if (location != null) {
-                                    Geocoder geocoder = new Geocoder(UserRegistration.this, Locale.getDefault());
+//                                    Geocoder  is a class for handling geocoding and reverse geocoding.
+//                                    Geocoding is the process of transforming a street address or other description of a location into a (latitude, longitude) coordinate.
+//                                    Reverse geocoding is the process of transforming a (latitude, longitude) coordinate into a (partial) address.
+                                            Geocoder geocoder = new Geocoder(UserRegistration.this, Locale.getDefault());
+//                                    A Locale object represents a specific geographical, political, or cultural region
                                 List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
-
+//                                    Returns an array of Addresses that are known to describe the area immediately surrounding the given latitude and longitude. The returned addresses will be localized for the locale provided to this class's constructor.
                                 Location.setText(Html.fromHtml("<font color='#000000'><b>Location:</b><br> "+addresses.get(0).getCountryName()+", "+addresses.get(0).getLocality()));
                                 Area.setText(Html.fromHtml("<font color='#000000'><b> Address:</b> <br>"+addresses.get(0).getAddressLine(0)));
 //                                Area.setText();
