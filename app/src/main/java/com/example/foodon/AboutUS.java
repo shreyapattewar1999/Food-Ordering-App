@@ -20,6 +20,6 @@ public class AboutUS extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
         startActivity(intent);
 
-        super.onBackPressed();
+//        super.onBackPressed();
     }
 }

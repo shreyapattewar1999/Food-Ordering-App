@@ -179,6 +179,6 @@ public class UserRegistration extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), MainMenu.class);
         startActivity(intent);
 
-        super.onBackPressed();
+//        super.onBackPressed();
     }
 }

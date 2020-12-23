@@ -160,7 +160,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
-
+                if (price != 0){
                 builder.setTitle("Place Order").setMessage("Your cart amount is "+Integer.toString(price)+". Press Ok to place your order").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -191,6 +191,8 @@ public class HomeActivity extends AppCompatActivity {
                 AlertDialog alert = builder.create();
                 alert.show();
 
+                }
+
 
             }
         });
@@ -213,7 +215,6 @@ public class HomeActivity extends AppCompatActivity {
             AlertDialog alert = builder.create();
             alert.show();
 
-            super.onBackPressed();
         }
 
         @Override
